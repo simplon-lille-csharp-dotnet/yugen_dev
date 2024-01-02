@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using yugen_dev.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<YugenContext>(options =>
+ options.UseSqlite(builder.Configuration.GetConnectionString("YugenContext")
+?? throw new InvalidOperationException("Connection string 'YugenContext' not found.")));
+
 
 var app = builder.Build();
 
