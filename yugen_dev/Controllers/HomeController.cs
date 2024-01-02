@@ -1,22 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using yugen_dev.Models;
+using yugen_dev.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace yugen_dev.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly YugenContext _context;
+        public HomeController(ILogger<HomeController> logger, YugenContext context)
         {
             _logger = logger;
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var dishes = await _context.Dishes.ToListAsync();
+            return View(dishes);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult Privacy()
         {
