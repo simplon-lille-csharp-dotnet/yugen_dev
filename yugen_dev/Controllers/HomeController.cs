@@ -25,7 +25,8 @@ namespace yugen_dev.Controllers
         {
             var viewModel = new HomeViewModel
             {
-                Clients = await _context.Clients.ToListAsync()
+                Clients = await _context.Clients.ToListAsync(),
+                Reviews = await _context.Reviews.ToListAsync(),
             };
 
             return View(viewModel);
