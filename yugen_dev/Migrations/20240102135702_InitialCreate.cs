@@ -28,6 +28,21 @@ namespace yugen_dev.Migrations
                 {
                     table.PrimaryKey("PK_Clients", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    Rating = table.Column<int>(type: "INTEGER", nullable: false),
+                    Fk_ClientId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -35,6 +50,9 @@ namespace yugen_dev.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
         }
     }
 }

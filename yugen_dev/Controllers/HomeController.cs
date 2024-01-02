@@ -3,6 +3,8 @@ using System.Diagnostics;
 using yugen_dev.Models;
 using yugen_dev.Data;
 using Microsoft.EntityFrameworkCore;
+using yugen_dev.ViewModels;
+using System.Reflection.Metadata.Ecma335;
 
 
 namespace yugen_dev.Controllers
@@ -21,9 +23,12 @@ namespace yugen_dev.Controllers
 
         public async Task<IActionResult> Index()
         {
-        var clients = await _context.Clients.ToListAsync();
-        return View(clients);
-         
+            var viewModel = new HomeViewModel
+            {
+                Clients = await _context.Clients.ToListAsync()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

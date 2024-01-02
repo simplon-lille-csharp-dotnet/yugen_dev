@@ -53,6 +53,27 @@ namespace yugen_dev.Migrations
 
                     b.ToTable("Clients");
                 });
+
+            modelBuilder.Entity("yugen_dev.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Fk_ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reviews");
+                });
 #pragma warning restore 612, 618
         }
     }

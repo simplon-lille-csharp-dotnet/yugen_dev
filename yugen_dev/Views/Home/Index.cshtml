@@ -1,4 +1,4 @@
-﻿@model IEnumerable<yugen_dev.Models.Client>
+﻿@model yugen_dev.ViewModels.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -9,9 +9,4 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@foreach (var client in Model) {
-    <p>@client.FirstName @client.LastName</p>
-    <p>@client.Email</p>
-    <p>@client.Address</p>
-    <p>@client.PhoneNumber</p>
-}
+@await Html.PartialAsync("_Clients", Model.Clients)

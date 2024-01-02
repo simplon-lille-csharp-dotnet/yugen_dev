@@ -10,7 +10,7 @@ using yugen_dev.Data;
 namespace yugen_dev.Migrations
 {
     [DbContext(typeof(YugenContext))]
-    [Migration("20240102093706_InitialCreate")]
+    [Migration("20240102135702_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -55,6 +55,27 @@ namespace yugen_dev.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Fk_ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reviews");
                 });
 #pragma warning restore 612, 618
         }
