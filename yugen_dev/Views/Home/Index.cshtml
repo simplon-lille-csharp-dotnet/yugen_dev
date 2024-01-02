@@ -1,8 +1,8 @@
-﻿@model IEnumerable<yugen_dev.Models.Dish>
+﻿@* @model IEnumerable<yugen_dev.Models.Dish> *@
 @{
     ViewData["Title"] = "Yūgen";
 }
-<table>
+@* <table>
     
  @foreach (var dish in Model)
     {
@@ -13,5 +13,6 @@
         </tr>
     }
    
-  </table>
+  </table> *@
+  
 <partial name="_SignatureDishes.cshtml"/>

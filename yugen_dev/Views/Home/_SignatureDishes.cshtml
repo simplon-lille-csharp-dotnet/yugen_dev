@@ -1,28 +1,39 @@
+@model IEnumerable<yugen_dev.Models.Dish>
+    @* <table>
+    
+ @foreach (var dish in Model)
+    {
+        <tr>
+            <td>@dish.NameFr</td>
+            <td>@dish.NameJap</td>
+            <td>@dish.DetailedDescription</td>
+        </tr>
+    }
+   
+  </table> *@
+  @{
+    var dishesArray = Model.ToArray(); // Convert the IEnumerable to an array for easier indexing
+}
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
             <img src="img/dish1.jpg" class="img-fluid" alt="Dish1">
             <h1>
-                Miyabi (雅)
+                @dishesArray[0].NameFr (@dishesArray[0].NameJap)
             </h1>
-            <p> Explorez l'harmonie exquise entre nos délicats sushis et la sophistication du caviar. Chaque bouchée
-                révèle une fusion parfaite de saveurs raffinées, une expérience gastronomique où la tradition japonaise
-                rencontre l'élégance contemporaine. </p>
+            <p> @dishesArray[0].DetailedDescription </p>
         </div>
         <div class="col-md-4 custom-mt-md-30">
             <img src="img/dish2.jpg" class="img-fluid" alt="Dish2">
-            <h1>Sora Reinbōrōru (空レインボーロール)</h1>
-            <p>Plongez dans l'harmonie exquise du "Sora Reinbōrōru", où chaque bouchée dévoile une symphonie de
-                fraîcheur subtile. Ce rouleau céleste incarne l'essence de la gastronomie japonaise, offrant une fusion
-                parfaite de saveurs délicates et raffinées. </p>
+            <h1>@dishesArray[1].NameFr (@dishesArray[1].NameJap)</h1>
+            <p>@dishesArray[1].DetailedDescription </p>
         </div>
         <div class="col-md-4 mt-md-5">
             <img src="img/dish3.jpg" class="img-fluid" alt="Dish3">
-            <h1> Himitsu (秘密) </h1>
+            <h1> @dishesArray[2].NameFr (@dishesArray[2].NameJap) </h1>
             <p>
-                Plongez dans l'univers exquis de notre plat signature, le "Himitsu", une création mystérieuse du chef
-                révolutionnant l'art du sushi. Un assortiment exclusif, soigneusement sélectionné, alliant
-                sophistication, mystère et délice. </p>
+                @dishesArray[2].DetailedDescription </p>
         </div>
     </div>
 </div>
