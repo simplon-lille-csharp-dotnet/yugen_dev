@@ -3,6 +3,10 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+Yugen.db
+Yugen.db-shm
+Yugen.db-wal
+
 # dotenv files
 .env
 
