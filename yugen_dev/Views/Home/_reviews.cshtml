@@ -1,0 +1,15 @@
+@model IEnumerable<yugen_dev.Models.Review>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var review in Model) {
+        @* Beware: find a way to display the client id name instead of his ID *@
+    <p>@review.Fk_ClientId</p>
+    <p>@review.Message</p>
+    <p>@review.Rating</p>
+    }
+}
+else
+{
+    <p>Il n'y a aucun avis pour le moment</p>
+}
