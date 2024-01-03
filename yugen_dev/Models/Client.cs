@@ -9,5 +9,6 @@
     public int PhoneNumber { get; set; }
     public string Password { get; set; }
     public string Preferences { get; set; }
-   public ICollection<Review> Reviews { get; set; } // A client have several reviews
+    public ICollection<Review> Reviews { get; set; } // A client can have several reviews
+    public ICollection<Reservation> Reservations { get; set; } // A client can have several reservations
  }

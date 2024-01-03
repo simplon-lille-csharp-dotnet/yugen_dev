@@ -26,7 +26,8 @@ namespace yugen_dev.Controllers
             var viewModel = new HomeViewModel
             {
                 Clients = await _context.Clients.ToListAsync(),
-                Reviews = await _context.Reviews.Include(r => r.Client).ToListAsync()
+                Reviews = await _context.Reviews.Include(r => r.Client).ToListAsync(),
+                Reservations = await _context.Reservations.ToListAsync()
             };
 
             return View(viewModel);

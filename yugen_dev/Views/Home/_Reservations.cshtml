@@ -1,0 +1,15 @@
+@model IEnumerable<yugen_dev.Models.Reservation>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var reservation in Model) {
+    <p>@client.FirstName @client.LastName</p>
+    <p>@reservation.NumberPeople</p>
+    <p>@reservation.DateReservation</p>
+    <p>@reservation.TimeReservation</p>
+    }
+}
+else
+{
+    <p>Il n'y a aucune réservation d'enregistrée</p>
+}
