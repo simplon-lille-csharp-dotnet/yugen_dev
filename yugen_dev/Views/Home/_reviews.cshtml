@@ -3,10 +3,8 @@
 @if (Model != null && Model.Any())
 {
     @foreach (var review in Model) {
-        @* Beware: find a way to display the client id name instead of his ID *@
-    <p>@review.Fk_ClientId</p>
+    <p>@review.Client.FirstName @review.Client.LastName @review.Rating/5</p>
     <p>@review.Message</p>
-    <p>@review.Rating</p>
     }
 }
 else

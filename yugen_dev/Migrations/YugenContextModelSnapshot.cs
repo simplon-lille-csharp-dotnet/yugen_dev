@@ -60,6 +60,9 @@ namespace yugen_dev.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Fk_ClientId")
                         .HasColumnType("INTEGER");
 
@@ -72,7 +75,25 @@ namespace yugen_dev.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.Review", b =>
+                {
+                    b.HasOne("yugen_dev.Models.Client", "Client")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.Client", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

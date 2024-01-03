@@ -5,4 +5,5 @@
     public string Message { get; set; }
     public int Rating { get; set; }
     public int Fk_ClientId{ get; set; }
+   public Client Client { get; set; } //One review belong to a single client  
  }

@@ -9,7 +9,6 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@await Html.PartialAsync("_Clients", Model.Clients)
-@await Html.PartialAsync("_Reviews", Model.Reviews)
-
 <partial name="_YugenPresentation.cshtml"/>
+
+@await Html.PartialAsync("_Reviews", Model.Reviews)
