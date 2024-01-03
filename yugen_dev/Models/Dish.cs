@@ -7,4 +7,5 @@ public class Dish
     public string Description { get; set; }
     public string DetailedDescription { get; set; }
     public bool SignatureDish { get; set; }
+    public string ImagePath { get; set; }
 }
