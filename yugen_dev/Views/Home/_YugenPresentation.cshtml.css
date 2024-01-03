@@ -1,0 +1,19 @@
+.container p {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .container p {
+    white-space: normal; /* Allow multiple lines */
+    max-width: 60%; /* Set a maximum width for larger screens */
+    margin: 0 auto; /* Center the paragraph */
+  }
+}
+
+@media (min-width: 992px) {
+  .container p {
+    white-space: normal; /* Allow multiple lines */
+    max-width: 50%; /* Set a maximum width for larger screens */
+    margin: 0 auto; /* Center the paragraph */
+  }
+}
