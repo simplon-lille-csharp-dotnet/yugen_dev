@@ -10,5 +10,5 @@ public class Client
   public string PhoneNumber { get; set; }
   public string Password { get; set; }
   public string Preferences { get; set; }
-  public ICollection<Review>? Reviews { get; set; } // A client have several reviews
+  public ICollection<Review> Reviews { get; set; } // A client have several reviews
 }
