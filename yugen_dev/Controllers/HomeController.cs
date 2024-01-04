@@ -28,7 +28,11 @@ namespace yugen_dev.Controllers
             {
                 Dishes = await _context.Dishes.ToListAsync(),
                 Clients = await _context.Clients.ToListAsync(),
-                Reviews = await _context.Reviews.Include(r => r.Client).ToListAsync()
+                Reviews = await _context.Reviews.Include(r => r.Client).ToListAsync(),
+                Menus = await _context.Menus
+                            .Include(m => m.MenusDishes)
+                            .ThenInclude(md => md.Dish)
+                            .ToListAsync()
             };
 
             return View(viewModel);

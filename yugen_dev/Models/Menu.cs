@@ -1,14 +1,11 @@
 namespace yugen_dev.Models;
-public class Dish
+
+public class Menu
 {
     public int Id { get; set; }
     public string NameFr { get; set; }
     public string NameJap { get; set; }
-    public string Description { get; set; }
-    public string DetailedDescription { get; set; }
-    public bool SignatureDish { get; set; }
-    public string ImagePath { get; set; }
-
+    public int Price { get; set; } //One review belong to a single client  
     public ICollection<MenuDish> MenusDishes { get; set; }
 
 }
