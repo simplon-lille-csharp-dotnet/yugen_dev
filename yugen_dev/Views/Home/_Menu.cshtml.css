@@ -1,0 +1,7 @@
+.jap-name {
+    width: 90px;
+}
+
+.menu-container:nth-child(odd) {
+ flex-direction: row-reverse;
+}
