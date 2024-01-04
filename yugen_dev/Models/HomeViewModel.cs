@@ -9,11 +9,14 @@ namespace yugen_dev.ViewModels
 
         public List<Review> Reviews { get; set; }
         public List<Dish> Dishes { get; set; }
+        public List<Menu> Menus { get; set; }
+
         public HomeViewModel()
         {
             Clients = new List<Client>();
             Reviews = new List<Review>();
             Dishes = new List<Dish>();
+            Menus = new List<Menu>();
         }
     }
 }
