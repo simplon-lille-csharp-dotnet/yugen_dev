@@ -1,7 +1,18 @@
 .jap-name {
-    width: 90px;
+    width: 130px;
+    font-family: noto sans jp, sans-serif;
 }
 
 .menu-container:nth-child(odd) {
  flex-direction: row-reverse;
 }
+
+@media (max-width: 768px) {
+    .menu-container {
+        flex-direction: column;
+    }
+
+    .jap-name {
+        width: 100px;
+    }
+  }
