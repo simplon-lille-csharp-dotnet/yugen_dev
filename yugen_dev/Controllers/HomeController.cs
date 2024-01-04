@@ -11,26 +11,29 @@ namespace yugen_dev.Controllers
 {
     public class HomeController : Controller
     {
-                private readonly YugenContext _context;
+        private readonly YugenContext _context;
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger,YugenContext context)
+        public HomeController(ILogger<HomeController> logger, YugenContext context)
         {
             _logger = logger;
-              _context = context;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
+            // var dishes = await _context.Dishes.ToListAsync();
             var viewModel = new HomeViewModel
             {
+                Dishes = await _context.Dishes.ToListAsync(),
                 Clients = await _context.Clients.ToListAsync(),
                 Reviews = await _context.Reviews.Include(r => r.Client).ToListAsync()
             };
 
             return View(viewModel);
         }
+
 
         public IActionResult Privacy()
         {

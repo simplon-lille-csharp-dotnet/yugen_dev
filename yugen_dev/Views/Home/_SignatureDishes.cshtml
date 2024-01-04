@@ -1,0 +1,53 @@
+@model IEnumerable<yugen_dev.Models.Dish>
+    @* <table>
+    
+ @foreach (var dish in Model)
+    {
+        <tr>
+            <td>@dish.NameFr</td>
+            <td>@dish.NameJap</td>
+            <td>@dish.DetailedDescription</td>
+        </tr>
+    }
+   
+  </table> *@
+  @{
+    var dishesArray = Model.ToArray(); // Convert the IEnumerable to an array for easier indexing
+}
+
+<div class="container">
+    <div class="row ">
+
+         @foreach (var dish in Model)
+    {
+         @if (dish.SignatureDish == true)
+    {
+         <div class="col-md-4 favorite-dishes">
+            <img src=@dish.ImagePath class="img-fluid" alt="Dish1">
+            <h2>@dish.NameFr (@dish.NameJap)</h2>
+            @* <h2>@dish.NameJap</h2> *@
+            <p>@dish.DetailedDescription<p>
+        </div>
+    }
+}
+        @* <div class="col-md-4">
+            <img src="img/dish1.jpg" class="img-fluid" alt="Dish1">
+            <h1>
+                @dishesArray[0].NameFr (@dishesArray[0].NameJap)
+            </h1>
+            <p> @dishesArray[0].DetailedDescription </p>
+        </div>
+        <div class="col-md-4 custom-mt-md-30">
+            <img src="img/dish2.jpg" class="img-fluid" alt="Dish2">
+            <h1>@dishesArray[1].NameFr (@dishesArray[1].NameJap)</h1>
+            <p>@dishesArray[1].DetailedDescription </p>
+        </div>
+        <div class="col-md-4 mt-md-5">
+            <img src="img/dish3.jpg" class="img-fluid" alt="Dish3">
+            <h1> @dishesArray[2].NameFr (@dishesArray[2].NameJap) </h1>
+            <p>
+                @dishesArray[2].DetailedDescription </p>
+        </div> *@
+    </div>
+</div>
+

@@ -1,14 +1,11 @@
-﻿@model yugen_dev.ViewModels.HomeViewModel
+@model yugen_dev.ViewModels.HomeViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Yūgen";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
 <partial name="_YugenPresentation.cshtml"/>
-
-@await Html.PartialAsync("_Reviews", Model.Reviews)
+ @* <partial name="_SignatureDishes.cshtml"/>    *@
+  @await Html.PartialAsync("_SignatureDishes", Model.Dishes)
+ @await Html.PartialAsync("_Reviews", Model.Reviews)

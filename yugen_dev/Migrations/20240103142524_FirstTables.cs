@@ -5,7 +5,7 @@
 namespace yugen_dev.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class FirstTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,6 +27,24 @@ namespace yugen_dev.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Dishes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NameFr = table.Column<string>(type: "TEXT", nullable: false),
+                    NameJap = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    DetailedDescription = table.Column<string>(type: "TEXT", nullable: false),
+                    SignatureDish = table.Column<bool>(type: "INTEGER", nullable: false),
+                    ImagePath = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dishes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,6 +78,9 @@ namespace yugen_dev.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Dishes");
+
             migrationBuilder.DropTable(
                 name: "Reviews");
 

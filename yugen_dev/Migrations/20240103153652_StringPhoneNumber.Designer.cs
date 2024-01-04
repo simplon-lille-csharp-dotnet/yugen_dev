@@ -10,8 +10,8 @@ using yugen_dev.Data;
 namespace yugen_dev.Migrations
 {
     [DbContext(typeof(YugenContext))]
-    [Migration("20240103103026_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240103153652_StringPhoneNumber")]
+    partial class StringPhoneNumber
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,8 +45,9 @@ namespace yugen_dev.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Preferences")
                         .IsRequired()
@@ -57,6 +58,40 @@ namespace yugen_dev.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("yugen_dev.Models.Dish", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DetailedDescription")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NameFr")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NameJap")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("SignatureDish")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dishes");
+                });
+
             modelBuilder.Entity("yugen_dev.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -64,9 +99,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClientId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Fk_ClientId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")
