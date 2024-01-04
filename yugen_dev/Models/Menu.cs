@@ -6,6 +6,6 @@ public class Menu
     public string NameFr { get; set; }
     public string NameJap { get; set; }
     public int Price { get; set; } //One review belong to a single client  
-    public ICollection<MenuDish>? MenusDishes { get; set; }
+    public ICollection<MenuDish> MenusDishes { get; set; }
 
 }
