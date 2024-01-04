@@ -13,5 +13,6 @@ namespace yugen_dev.Data
         public DbSet<Client> Clients { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Menu> Menus { get; set; }
     }
 }
