@@ -77,14 +77,6 @@ h1, h2, h3, h4 {
   color: #FF492D;
 }
 
-.ft-family-poppins {
-  font-family: poppins;
-}
-
-.ft-family-space-grotesk {
-  font-family: space grotesk;
-}
-
 .remove-all-padding {
   padding: 0 !important;
 }
