@@ -1,0 +1,13 @@
+@model IEnumerable<yugen_dev.Models.Review>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var review in Model) {
+    <p>@review.Client.FirstName @review.Client.LastName @review.Rating/5</p>
+    <p>@review.Message</p>
+    }
+}
+else
+{
+    <p>Il n'y a aucun avis pour le moment</p>
+}
