@@ -55,5 +55,42 @@ namespace yugen_dev.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("NumberPeople,DateReservation,TimeReservation,Message,Client")] Reservation Reservation)
+        {
+
+            if (ModelState.IsValid)
+                {
+                    // Reservation.Client = new Client();
+                    // Reservation.Client.Id = 1;
+                    // tu lies l'utilisateur actuellement connecté à cette réservation
+                    // if (Reservation != null && Reservation.Client != null)
+                    //     {
+                    //         Reservation.Client.Id = 1;
+                    //     }
+                    // else
+                    //     {
+                    //         // Log or handle the case where Reservation or Client is null
+                    //         return BadRequest("Invalid Reservation or Client object");
+                    //     }
+
+                    _context.Add(Reservation);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "La réservation a bien été enregistrée!";
+                    return RedirectToAction(nameof(Index));
+                }
+                else {
+                    System.Console.WriteLine("modèle pas valide!");
+                }
+            return View(Reservation);
+        }
+
     }
 }

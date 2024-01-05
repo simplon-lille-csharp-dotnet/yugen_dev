@@ -21,7 +21,7 @@ namespace yugen_dev.Migrations
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Address = table.Column<string>(type: "TEXT", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     Preferences = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -72,8 +72,8 @@ namespace yugen_dev.Migrations
                     NumberPeople = table.Column<int>(type: "INTEGER", nullable: false),
                     DateReservation = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TimeReservation = table.Column<TimeSpan>(type: "TEXT", nullable: false),
-                    Fk_ClientId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ClientId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    ClientId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,8 +82,7 @@ namespace yugen_dev.Migrations
                         name: "FK_Reservations_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

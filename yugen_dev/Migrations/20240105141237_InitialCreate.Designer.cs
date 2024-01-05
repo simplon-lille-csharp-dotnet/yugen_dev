@@ -11,7 +11,7 @@ using yugen_dev.Data;
 namespace yugen_dev.Migrations
 {
     [DbContext(typeof(YugenContext))]
-    [Migration("20240105092658_InitialCreate")]
+    [Migration("20240105141237_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,7 +22,7 @@ namespace yugen_dev.Migrations
 
             modelBuilder.Entity("yugen_dev.Models.Client", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -46,8 +46,9 @@ namespace yugen_dev.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Preferences")
                         .IsRequired()
@@ -141,14 +142,15 @@ namespace yugen_dev.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClientId")
+                    b.Property<int?>("ClientId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateReservation")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Fk_ClientId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("NumberPeople")
                         .HasColumnType("INTEGER");
@@ -209,9 +211,7 @@ namespace yugen_dev.Migrations
                 {
                     b.HasOne("yugen_dev.Models.Client", "Client")
                         .WithMany("Reservations")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
 
                     b.Navigation("Client");
                 });

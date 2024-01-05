@@ -19,7 +19,7 @@ namespace yugen_dev.Migrations
 
             modelBuilder.Entity("yugen_dev.Models.Client", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -133,6 +133,35 @@ namespace yugen_dev.Migrations
                     b.ToTable("MenuDish");
                 });
 
+            modelBuilder.Entity("yugen_dev.Models.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateReservation")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NumberPeople")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<TimeSpan>("TimeReservation")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("yugen_dev.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -179,9 +208,7 @@ namespace yugen_dev.Migrations
                 {
                     b.HasOne("yugen_dev.Models.Client", "Client")
                         .WithMany("Reservations")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
 
                     b.Navigation("Client");
                 });
