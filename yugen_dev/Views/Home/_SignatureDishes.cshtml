@@ -1,0 +1,24 @@
+@model IEnumerable<yugen_dev.Models.Dish>
+  
+  @{
+    var dishesArray = Model.ToArray(); // Convert the IEnumerable to an array for easier indexing
+}
+
+<div class="container">
+    <div class="row ">
+
+         @foreach (var dish in Model)
+    {
+         @if (dish.SignatureDish == true)
+    {
+         <div class="col-md-4 favorite-dishes">
+            <img src=@dish.ImagePath class="img-fluid" alt="Dish1">
+            <h2>@dish.NameFr (@dish.NameJap)</h2>
+            <p>@dish.DetailedDescription<p>
+        </div>
+    }
+}
+       
+    </div>
+</div>
+

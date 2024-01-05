@@ -43,8 +43,9 @@ namespace yugen_dev.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Preferences")
                         .IsRequired()
@@ -55,29 +56,81 @@ namespace yugen_dev.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("yugen_dev.Models.Reservation", b =>
+            modelBuilder.Entity("yugen_dev.Models.Dish", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateReservation")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("NumberPeople")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<TimeSpan>("TimeReservation")
+                    b.Property<string>("DetailedDescription")
+                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NameFr")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NameJap")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("SignatureDish")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.ToTable("Dishes");
+                });
 
-                    b.ToTable("Reservations");
+            modelBuilder.Entity("yugen_dev.Models.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NameFr")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NameJap")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.MenuDish", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DishId");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("MenuDish");
                 });
 
             modelBuilder.Entity("yugen_dev.Models.Review", b =>
@@ -87,9 +140,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClientId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Fk_ClientId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")
@@ -104,6 +154,25 @@ namespace yugen_dev.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.MenuDish", b =>
+                {
+                    b.HasOne("yugen_dev.Models.Dish", "Dish")
+                        .WithMany("MenusDishes")
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("yugen_dev.Models.Menu", "Menu")
+                        .WithMany("MenusDishes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dish");
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("yugen_dev.Models.Reservation", b =>
@@ -133,6 +202,16 @@ namespace yugen_dev.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.Dish", b =>
+                {
+                    b.Navigation("MenusDishes");
+                });
+
+            modelBuilder.Entity("yugen_dev.Models.Menu", b =>
+                {
+                    b.Navigation("MenusDishes");
                 });
 #pragma warning restore 612, 618
         }
