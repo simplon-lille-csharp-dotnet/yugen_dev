@@ -9,6 +9,6 @@ public class Dish
     public bool SignatureDish { get; set; }
     public string ImagePath { get; set; }
 
-    public ICollection<MenuDish> MenusDishes { get; set; }
+    public ICollection<MenuDish>? MenusDishes { get; set; }
 
 }
