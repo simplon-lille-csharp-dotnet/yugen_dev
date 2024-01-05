@@ -32,7 +32,8 @@ namespace yugen_dev.Controllers
                 Menus = await _context.Menus
                             .Include(m => m.MenusDishes)
                             .ThenInclude(md => md.Dish)
-                            .ToListAsync()
+                            .ToListAsync(),
+                Reservations = await _context.Reservations.ToListAsync()
             };
 
             return View(viewModel);
@@ -40,6 +41,11 @@ namespace yugen_dev.Controllers
 
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Booking()
         {
             return View();
         }

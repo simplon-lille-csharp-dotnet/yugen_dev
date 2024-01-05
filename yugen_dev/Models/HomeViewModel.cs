@@ -8,6 +8,8 @@ namespace yugen_dev.ViewModels
         public List<Client> Clients { get; set; }
 
         public List<Review> Reviews { get; set; }
+
+        public List<Reservation> Reservations { get; set; }
         public List<Dish> Dishes { get; set; }
         public List<Menu> Menus { get; set; }
 
@@ -15,6 +17,7 @@ namespace yugen_dev.ViewModels
         {
             Clients = new List<Client>();
             Reviews = new List<Review>();
+            Reservations = new List<Reservation>();
             Dishes = new List<Dish>();
             Menus = new List<Menu>();
         }
