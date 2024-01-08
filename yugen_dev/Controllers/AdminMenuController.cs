@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using yugen_dev.Data;
 using yugen_dev.Models;
@@ -22,7 +17,12 @@ namespace yugen_dev
         // GET: AdminMenu
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Menus.ToListAsync());
+            var menusView = await _context.Menus
+                .Include(menu => menu.MenusDishes)
+                .ThenInclude(menuDishes => menuDishes.Dish)
+                .ToListAsync();
+            
+            return View(menusView);
         }
 
         // GET: AdminMenu/Details/5

@@ -1,13 +1,13 @@
 @model IEnumerable<yugen_dev.Models.Menu>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Liste des menus";
 }
 
-<h1>Index</h1>
+<h1>Liste des menus</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Créer un nouveau menu</a>
 </p>
 <table class="table">
     <thead>
@@ -21,27 +21,42 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
+            <th>
+                Liste Plats
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameFr)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameJap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.NameFr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.NameJap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@menu.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@menu.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@menu.Id">Delete</a>
+                </td>
+                <td>
+                    <ul>
+                        @if (menu.MenusDishes != null)
+                            @foreach (var MenuDish in menu.MenusDishes)
+                            {
+                                <li>@MenuDish.Dish.NameFr</li>
+                            }
+                    </ul>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
