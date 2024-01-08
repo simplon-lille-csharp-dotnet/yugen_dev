@@ -1,10 +1,10 @@
 @model IEnumerable<yugen_dev.Models.Menu>
-<div id="menu">
-    <h2 class="mt-5 mb-4 fs-2">Menu du moment</h2>
-    @foreach (var menu in Model)
-    {
-        if (menu != null)
-        {
+
+<h2 class="mt-5 mb-4 fs-2">Menu du moment</h2>
+        @foreach (var menu in Model)
+            {
+            if (menu != null)
+        { 
             <div class="menu-container d-flex gap-3">
                 <div class="menu-text-container d-flex flex-column flex-grow-1">
                     <div class="menu-title-container d-inline-flex mb-3">
@@ -12,27 +12,26 @@
                         <h3 class="flex-grow-1">@menu.NameFr</h3>
                         <h3>@menu.Price</h3>
                     </div>
-                    @foreach (var menuDish in menu.MenusDishes)
-                    {
-                        <div class="menu-dish-container d-inline-flex">
-                            <h4 class="jap-name fs-6">@menuDish.Dish.NameJap</h4>
-                            <div class="menu-dish-description">
-                                <h4 class="fs-5">@menuDish.Dish.NameFr</h4>
-                                <p>@menuDish.Dish.Description </p>
-                            </div>
-                        </div>
-                    }
+                        @foreach (var menuDish in menu.MenusDishes)
+                        {
+                              <div class="menu-dish-container d-inline-flex">
+                                   <h4  class="jap-name fs-6">@menuDish.Dish.NameJap</h4>
+                                   <div class="menu-dish-description">
+                                        <h4 class="fs-5">@menuDish.Dish.NameFr</h4>
+                                        <p>@menuDish.Dish.Description </p>
+                                   </div>
+                              </div> 
+                         }
                 </div>
                 @* @{
-        var firstDish = Model.menu.MenusDishes.First();
-        <img src="@firstDish.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
-        } *@
+                    var firstDish = Model.menu.MenusDishes.First();
+                    <img src="@firstDish.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
+               } *@
                 @foreach (var menuDish in menu.MenusDishes)
                 {
                     <img src="@menuDish.Dish.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
                     break;
                 }
-            </div>
+                </div>
+            }
         }
-    }
-</div>
