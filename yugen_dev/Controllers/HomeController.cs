@@ -68,26 +68,24 @@ namespace yugen_dev.Controllers
 
             if (ModelState.IsValid)
                 {
-                    // Reservation.Client = new Client();
-                    // Reservation.Client.Id = 1;
-                    // tu lies l'utilisateur actuellement connecté à cette réservation
-                    // if (Reservation != null && Reservation.Client != null)
-                    //     {
-                    //         Reservation.Client.Id = 1;
-                    //     }
-                    // else
-                    //     {
-                    //         // Log or handle the case where Reservation or Client is null
-                    //         return BadRequest("Invalid Reservation or Client object");
-                    //     }
+                    var client = await _context.Clients.FindAsync(1);
 
-                    _context.Add(Reservation);
-                    await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "La réservation a bien été enregistrée!";
-                    return RedirectToAction(nameof(Index));
+                    if (client != null)
+                        {
+                        Reservation.Client = client;
+
+                        _context.Add(Reservation);
+                        await _context.SaveChangesAsync();
+                        TempData["SuccessMessage"] = "La réservation a bien été enregistrée!";
+                        return RedirectToAction(nameof(Index));
+                        }
+                    else
+                    {
+                         return BadRequest("Client not found");
+                    }
                 }
                 else {
-                    System.Console.WriteLine("modèle pas valide!");
+                    System.Console.WriteLine("model not valid!");
                 }
             return View(Reservation);
         }
