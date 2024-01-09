@@ -24,9 +24,8 @@ namespace yugen_dev.Data
 
             modelBuilder.Entity<Client>()
                 .HasOne(c => c.IdentityUser)
-                .WithMany()
-                .HasForeignKey(c => c.IdentityUserId)
-                .IsRequired(false);
+                .WithOne()
+                .HasForeignKey<Client>(c => c.IdentityUserId);
         }
     }
 }
