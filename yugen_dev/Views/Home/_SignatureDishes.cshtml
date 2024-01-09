@@ -4,7 +4,7 @@
     var dishesArray = Model.ToArray(); // Convert the IEnumerable to an array for easier indexing
 }
 
-<div class="container mt-5" >
+<div class="container">
     <div class="row ">
 
          @foreach (var dish in Model)
@@ -13,7 +13,7 @@
     {
          <div class="col-md-4 favorite-dishes">
             <img src=@dish.ImagePath class="img-fluid" alt="Dish1">
-            <h2 class="fs-5 mt-3">@dish.NameFr <span class="jap-name"> @dish.NameJap</span></h2>
+            <h2>@dish.NameFr (@dish.NameJap)</h2>
             <p>@dish.DetailedDescription<p>
         </div>
     }
