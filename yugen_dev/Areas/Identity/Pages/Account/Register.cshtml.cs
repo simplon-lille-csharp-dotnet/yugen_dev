@@ -118,10 +118,6 @@ namespace yugen_dev.Areas.Identity.Pages.Account
             public string Address { get; set; }
 
             [Required]
-            [Display(Name = "PhoneNumber")]
-            public string PhoneNumber { get; set; }
-
-            [Required]
             [Display(Name = "Preferences")]
             public string Preferences { get; set; }
         }
@@ -156,7 +152,6 @@ namespace yugen_dev.Areas.Identity.Pages.Account
                         FirstName = Input.FirstName,
                         LastName = Input.LastName,
                         Address = Input.Address,
-                        PhoneNumber = Input.PhoneNumber,
                         Preferences = Input.Preferences,
                     };
 

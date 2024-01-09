@@ -235,10 +235,6 @@ namespace yugen_dev.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Preferences")
                         .IsRequired()
                         .HasColumnType("TEXT");

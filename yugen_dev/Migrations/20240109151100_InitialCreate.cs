@@ -198,7 +198,6 @@ namespace yugen_dev.Migrations
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     Address = table.Column<string>(type: "TEXT", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     Preferences = table.Column<string>(type: "TEXT", nullable: false),
                     IdentityUserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
