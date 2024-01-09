@@ -3,7 +3,9 @@
     margin-top: 200px;
   }
 } */
-
+.jap-name {
+  font-family: noto sans jp, sans-serif;
+}
 @media (min-width: 768px) {
   .favorite-dishes:nth-child(2) {
     padding-top: 10rem;
