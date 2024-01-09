@@ -5,6 +5,7 @@ using yugen_dev.Data;
 using Microsoft.EntityFrameworkCore;
 using yugen_dev.ViewModels;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace yugen_dev.Controllers
@@ -55,5 +56,15 @@ namespace yugen_dev.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Authorize]
+        public class SecretController : Controller
+        {
+        public IActionResult Secret()
+        {
+        return View();
+        }
+        }
+
     }
 }

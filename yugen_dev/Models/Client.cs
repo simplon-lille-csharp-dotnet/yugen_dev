@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 namespace yugen_dev.Models;
 
 public class Client
@@ -10,6 +11,10 @@ public class Client
    public string PhoneNumber { get; set; }
    public string Password { get; set; }
    public string Preferences { get; set; }
+
+
+   public string IdentityUserId { get; set; }
+   public IdentityUser IdentityUser { get; set; }
    public ICollection<Review>? Reviews { get; set; } // A client can have several reviews
    public ICollection<Reservation>? Reservations { get; set; } // A client can have several reservations
 }
