@@ -113,11 +113,9 @@ namespace yugen_dev.Areas.Identity.Pages.Account
             [Display(Name = "LastName")]
             public string LastName { get; set; }
 
-            [Required]
             [Display(Name = "Address")]
             public string Address { get; set; }
 
-            [Required]
             [Display(Name = "Preferences")]
             public string Preferences { get; set; }
         }

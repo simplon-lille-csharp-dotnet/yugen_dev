@@ -220,7 +220,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
@@ -236,7 +235,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Preferences")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

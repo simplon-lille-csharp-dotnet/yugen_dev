@@ -197,8 +197,8 @@ namespace yugen_dev.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", nullable: false),
-                    Preferences = table.Column<string>(type: "TEXT", nullable: false),
+                    Address = table.Column<string>(type: "TEXT", nullable: true),
+                    Preferences = table.Column<string>(type: "TEXT", nullable: true),
                     IdentityUserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
