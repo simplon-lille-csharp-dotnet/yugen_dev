@@ -1,0 +1,54 @@
+@model yugen_dev.Models.Dish
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Détails</h1>
+
+<div>
+    <h4>Plat</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameFr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameFr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameJap)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameJap)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailedDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DetailedDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SignatureDish)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SignatureDish)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
+    <a asp-action="Index">Retour à la liste des plats</a>
+</div>

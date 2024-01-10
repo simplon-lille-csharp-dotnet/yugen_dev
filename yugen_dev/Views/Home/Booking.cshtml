@@ -7,74 +7,56 @@
 @{
     ViewData["Title"] = "Booking";
 }
-
-<img src="~/images/Yoshii's+Omakase+dining+experience+nobu+restaurant+Sydney.jpg" alt="logo yugen" class="z-1 img-fluid vw-100 vh-100 object-fit-cover fixed-top">
+<img src="~/img/Yoshii's+Omakase+dining+experience+nobu+restaurant+Sydney.jpg" alt="logo yugen" class="z-1 img-fluid vw-100 vh-100 object-fit-cover fixed-top">
 <div class="container-md z-2 position-relative bg-white mw-650px remove-all-padding text-center">
     <div class="d-flex flex-row height-200 justify-content-center align-items-center">
         <a href="/" class="position-absolute start-0 align-self-start m-2 text-main-red">Retour au site</a>
-        <img src="~/images/logo_yugen.png" alt="logo yugen" class="w-50"/>
+        <img src="~/img/logo_yugen.png" alt="logo yugen" class="w-50"/>
     </div>
     <h1 class="col-10 text-center mx-auto ft-family-poppins h3">Jean-Baltazar, le Yūgen se réjouit à l'idée de vous revoir bientôt.</h1>
     <p class="col-10 mx-auto mt-3 mb-3">Pour les réservations de groupes dépassant quatre personnes et les demandes de privatisation, nous vous prions de bien vouloir nous contacter par téléphone au 03 47 20 00 01. Nous nous tenons à votre disposition pour répondre à toutes vos demandes avec le plus grand plaisir.</p>
     
         <form asp-action="Create" method="post" class="z-2">
     <div class="z-2">
-        <label asp-for="NumberPeople"></label>
-        <input asp-for="NumberPeople" />
+        <select asp-for="NumberPeople" class="bg-dark-blue text-white border-0 px-2 py-1">
+            <option value="1">1 couvert</option>
+            <option value="2">2 couverts</option>
+            <option value="3">3 couverts</option>
+            <option value="4">4 couverts</option>
+        </select>
         <span asp-validation-for="NumberPeople" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="DateReservation"></label>
-        <textarea asp-for="DateReservation"></textarea>
+        <input type="date" asp-for="DateReservation" class="bg-dark-blue text-white border-0 px-2 py-1"/>
         <span asp-validation-for="DateReservation" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="TimeReservation"></label>
-        <textarea asp-for="TimeReservation"></textarea>
+         <select asp-for="TimeReservation" class="bg-dark-blue text-white border-0 px-2 py-1">
+            <option value="1.19:00:00">à 19:00</option>
+            <option value="1.19:30:00">à 19:30</option>
+            <option value="1.20:00:00">à 20:00</option>
+            <option value="1.20:30:00">à 20:30</option>
+            <option value="1.21:00:00">à 21:00</option>
+            <option value="1.21:30:00">à 21:30</option>
+            <option value="1.22:00:00">à 22:00</option>
+        </select>
         <span asp-validation-for="TimeReservation" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="Message"></label>
-        <textarea asp-for="Message"></textarea>
-        <span asp-validation-for="Message" class="text-danger"></span>
-    </div>
-    <button type="submit">Envoyer</button>
-</form>
-    
-    <div class="d-flex flex-row flex-wrap justify-content-center gap-2">
-        <select name="plate" id="plate-select" class="bg-dark-blue text-white border-0 px-2 py-1">
-            <option value="1plate">1 couvert</option>
-            <option value="2plates">2 couverts</option>
-            <option value="3plates">3 couverts</option>
-            <option value="3plates">4 couverts</option>
-        </select>
-        <input type="date" id="start" name="date-select" value="2023-12-28" min="2023-12-28" max="2024-12-28" class="bg-dark-blue text-white border-0 px-2 py-1"/>
-        <select name="hour" id="hour-select" class="bg-dark-blue text-white border-0 px-2 py-1">
-            <option value="1900">à 19:00</option>
-            <option value="1930">à 19:30</option>
-            <option value="2000">à 20:00</option>
-            <option value="2030">à 20:30</option>
-            <option value="2100">à 21:00</option>
-            <option value="2130">à 21:30</option>
-            <option value="2200">à 22:00</option>
-        </select>
-    </div>
     <div class="d-flex flex-column col-7 mx-auto mt-2 mb-4">
-        <label for="message-for-staff">Un message à nous faire passer?</label>
-        <textarea id="message-for-staff" name="message-for-staff" rows="3" cols="33">
+        <label asp-for="Message">Un message à nous faire passer?</label>
+        <textarea asp-for="Message" rows="3" cols="33">
             Allergies, évènement, autre...
         </textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
     </div>
-    <div class="bg-light-yellow pt-2 pb-2">
-        <p class="col-10 mx-auto">Pour les dates sélectionnées, nous n’avons pas de disponibilité, mais nous pouvons vous proposer les dates suivantes pour la même heure</p>
-        <div class="d-flex flex-row flex-wrap gap-2 justify-content-center col-8 mx-auto">
-            <button class="btn btn-light">Jeu. 4 janvier</button>
-            <button class="btn btn-light">Ven. 5 janvier</button>
-            <button class="btn btn-light">Sam. 6 janvier</button>
-            <button class="btn btn-light">Dim. 7 janvier</button>
-            <button class="btn btn-light">Lun. 8 janvier</button>
-            <button class="btn btn-light">Mar. 9 janvier</button>
-        </div>
-    </div>
-    <input type="submit" value="Réserver" class="mx-auto mt-3 mb-3 bg-main-red text-white border-0 rounded-corner px-4 py-2"/>
+    <input type="submit" value="Réserver" class="mx-auto mb-3 bg-main-red text-white border-0 rounded-corner px-4 py-2"/>
+</form>
 </div>
+
+<script>
+    @* var today = new Date().toISOString().split('T')[0];
+
+    var maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 6);
+    var maxDateFormatted = maxDate.toISOString().split('T')[0];
+
+    document.getElementById('dateInput').min = today;
+    document.getElementById('dateInput').value = today;
+    document.getElementById('dateInput').max = maxDate; *@
+</script>
