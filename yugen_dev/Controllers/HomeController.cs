@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using yugen_dev.ViewModels;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 
 namespace yugen_dev.Controllers
@@ -46,15 +47,35 @@ namespace yugen_dev.Controllers
             return View();
         }
 
-        public IActionResult Booking()
-        {
-            return View();
-        }
+        // public IActionResult Booking()
+        // {
+        //     return View();
+        // }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> Booking()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string clientFirstName = "Jean-Baltazare"; // Default name
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var client = await _context.Clients.SingleOrDefaultAsync(c => c.IdentityUserId == userId);
+
+                if (client != null)
+                {
+                    clientFirstName = client.FirstName;
+                }
+            }
+
+            ViewData["ClientFirstName"] = clientFirstName;
+
+            return View();
+            }
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            public IActionResult Error()
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [Authorize]
@@ -79,7 +100,11 @@ namespace yugen_dev.Controllers
 
             if (ModelState.IsValid)
                 {
-                    var client = await _context.Clients.FindAsync(1);
+                    // var client = await _context.Clients.FindAsync(1);
+
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var client = await _context.Clients.SingleOrDefaultAsync(c => c.IdentityUserId == userId);
+
 
                     if (client != null)
                         {

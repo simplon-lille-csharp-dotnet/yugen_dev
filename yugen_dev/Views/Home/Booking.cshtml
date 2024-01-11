@@ -1,3 +1,5 @@
+@using System.Security.Claims;
+
 @model yugen_dev.Models.Reservation
 @if (TempData["SuccessMessage"] != null)
 {
@@ -6,6 +8,7 @@
 
 @{
     ViewData["Title"] = "Booking";
+    string clientFirstName = ViewData["ClientFirstName"] as string ?? "Jean-Baltazare";
 }
 <img src="~/img/Yoshii's+Omakase+dining+experience+nobu+restaurant+Sydney.jpg" alt="logo yugen" class="z-1 img-fluid vw-100 vh-100 object-fit-cover fixed-top">
 <div class="container-md z-2 position-relative bg-white mw-650px remove-all-padding text-center">
@@ -13,7 +16,7 @@
         <a href="/" class="position-absolute start-0 align-self-start m-2 text-main-red">Retour au site</a>
         <img src="~/img/logo_yugen.png" alt="logo yugen" class="w-50"/>
     </div>
-    <h1 class="col-10 text-center mx-auto ft-family-poppins h3">Jean-Baltazar, le Yūgen se réjouit à l'idée de vous revoir bientôt.</h1>
+    <h1 class="col-10 text-center mx-auto ft-family-poppins h3"> @clientFirstName, le Yūgen se réjouit à l'idée de vous revoir bientôt.</h1>
     <p class="col-10 mx-auto mt-3 mb-3">Pour les réservations de groupes dépassant quatre personnes et les demandes de privatisation, nous vous prions de bien vouloir nous contacter par téléphone au 03 47 20 00 01. Nous nous tenons à votre disposition pour répondre à toutes vos demandes avec le plus grand plaisir.</p>
     
         <form asp-action="Create" method="post" class="z-2">
@@ -59,4 +62,5 @@
     document.getElementById('dateInput').min = today;
     document.getElementById('dateInput').value = today;
     document.getElementById('dateInput').max = maxDate; *@
+    
 </script>
