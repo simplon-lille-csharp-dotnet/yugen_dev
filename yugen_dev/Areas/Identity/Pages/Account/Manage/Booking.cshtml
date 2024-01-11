@@ -1,0 +1,30 @@
+@page
+@using yugen_dev.Models;
+@using yugen_dev.Data;
+
+@* @model IEnumerable<Reservation> *@
+
+@{
+    ViewData["Title"] = "Réservation";
+    ViewData["ActivePage"] = ManageNavPages.Booking;
+}
+
+<h3>@ViewData["Title"]</h3>
+<p>Work in progress</p>
+@* @if (Model != null && Model.Any())
+{
+    @foreach (var reservation in Model) {
+    <p>@reservation.Client?.FirstName @reservation.Client?.LastName</p>
+    <p>@reservation.NumberPeople</p>
+    <p>@reservation.DateReservation</p>
+    <p>@reservation.TimeReservation</p>
+    }
+}
+else
+{
+    <p>Il n'y a aucune réservation d'enregistrée</p>
+} *@
+
+@* section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}  *@
