@@ -1,0 +1,65 @@
+@model IEnumerable<yugen_dev.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des réservations</h1>
+
+<p>
+    <a asp-action="Create">Créer une nouvelle réservation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberPeople)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReservation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeReservation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberPeople)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReservation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeReservation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
