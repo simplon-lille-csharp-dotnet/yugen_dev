@@ -4,7 +4,6 @@ using yugen_dev.Models;
 using yugen_dev.Data;
 using Microsoft.EntityFrameworkCore;
 using yugen_dev.ViewModels;
-using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
@@ -54,7 +53,7 @@ namespace yugen_dev.Controllers
 
         public async Task<IActionResult> Booking()
         {
-            string clientFirstName = "Jean-Baltazare"; // Default name
+            string clientFirstName = "Visiteur non connecté"; // Default name
 
             if (User.Identity.IsAuthenticated)
             {
@@ -65,6 +64,10 @@ namespace yugen_dev.Controllers
                 {
                     clientFirstName = client.FirstName;
                 }
+            }
+            else
+            {
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
 
             ViewData["ClientFirstName"] = clientFirstName;
