@@ -247,7 +247,7 @@ namespace yugen_dev.Migrations
                     NumberPeople = table.Column<int>(type: "INTEGER", nullable: false),
                     DateReservation = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TimeReservation = table.Column<TimeSpan>(type: "TEXT", nullable: false),
-                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    Message = table.Column<string>(type: "TEXT", nullable: true),
                     ClientId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>

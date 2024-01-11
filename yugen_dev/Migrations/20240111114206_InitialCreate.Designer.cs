@@ -11,7 +11,7 @@ using yugen_dev.Data;
 namespace yugen_dev.Migrations
 {
     [DbContext(typeof(YugenContext))]
-    [Migration("20240110143549_InitialCreate")]
+    [Migration("20240111114206_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -338,7 +338,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberPeople")

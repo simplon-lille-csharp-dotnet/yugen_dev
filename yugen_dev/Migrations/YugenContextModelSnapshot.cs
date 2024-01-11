@@ -335,7 +335,6 @@ namespace yugen_dev.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberPeople")

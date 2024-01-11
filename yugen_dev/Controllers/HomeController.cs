@@ -46,11 +46,6 @@ namespace yugen_dev.Controllers
             return View();
         }
 
-        // public IActionResult Booking()
-        // {
-        //     return View();
-        // }
-
         public async Task<IActionResult> Booking()
         {
             string clientFirstName = "Visiteur non connecté"; // Default name
