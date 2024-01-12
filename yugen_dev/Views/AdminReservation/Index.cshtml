@@ -28,9 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Client.LastName)
             </th>
-            @* <th>
+            <th>
                 @Html.DisplayNameFor(model => model.Client.FirstName)
-            </th> *@
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -53,8 +53,8 @@
                 @Html.DisplayFor(modelItem => item.Client.LastName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Éditer</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
             </td>
         </tr>
