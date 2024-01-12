@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.NumberPeople)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateReservation)
+                @item.DateReservation.ToString("dd/MM/yyyy")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeReservation)
