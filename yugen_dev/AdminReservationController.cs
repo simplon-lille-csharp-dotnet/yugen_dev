@@ -22,6 +22,7 @@ namespace yugen_dev
         // GET: AdminReservation
         public async Task<IActionResult> Index()
         {
+            var reservations = _context.Reservations.Include(r => r.Client).ToList();
             return View(await _context.Reservations.ToListAsync());
         }
 

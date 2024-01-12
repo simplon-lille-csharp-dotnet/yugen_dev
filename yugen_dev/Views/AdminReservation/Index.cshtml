@@ -49,9 +49,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client.LastName)
-            </td>
+            @if (item.Client != null)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.FirstName)
+                </td>
+                }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Éditer</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
