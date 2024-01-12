@@ -39,24 +39,9 @@
     </div>
     <div class="d-flex flex-column col-7 mx-auto mt-2 mb-4">
         <label asp-for="Message">Un message à nous faire passer?</label>
-        <textarea asp-for="Message" rows="3" cols="33">
-            Allergies, évènement, autre...
-        </textarea>
+        <textarea asp-for="Message" rows="3" cols="33"></textarea>
         <span asp-validation-for="Message" class="text-danger"></span>
     </div>
     <input type="submit" value="Réserver" class="mx-auto mb-3 bg-main-red text-white border-0 rounded-corner px-4 py-2"/>
 </form>
 </div>
-
-<script>
-    @* var today = new Date().toISOString().split('T')[0];
-
-    var maxDate = new Date();
-    maxDate.setMonth(today.getMonth() + 6);
-    var maxDateFormatted = maxDate.toISOString().split('T')[0];
-
-    document.getElementById('dateInput').min = today;
-    document.getElementById('dateInput').value = today;
-    document.getElementById('dateInput').max = maxDate; *@
-    
-</script>

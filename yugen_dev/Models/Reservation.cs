@@ -1,5 +1,5 @@
  using System.ComponentModel.DataAnnotations;
- namespace  yugen_dev.Models;
+ namespace yugen_dev.Models;
  using yugen_dev.ValidationAttributes;
  
  public class Reservation {
@@ -9,6 +9,7 @@
     [Display(Name = "Nombre de personnes")]
     public int NumberPeople { get; set; }
     [Required]
+    [CustomDateOnOrAfterTodayAttribute(ErrorMessage = "La date de réservation doit être aujourd'hui ou ultérieure.")]
     [Display(Name = "Date de réservation")]
     public DateTime DateReservation { get; set; }
     [Required]
