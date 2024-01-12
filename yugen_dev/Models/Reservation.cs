@@ -15,6 +15,7 @@
     [CustomTimeReservation(ErrorMessage = "Invalid time reservation value.")]
     [Display(Name = "Heure de réservation")]
     public TimeSpan TimeReservation { get; set; }
+    [Display(Name = "Nom du client et message")]
     public string? Message { get; set; }
     public Client? Client { get; set; } //One reservation belong to a single client  
  }

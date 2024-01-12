@@ -24,15 +24,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client.FirstName)
-            </th>
+            @* Beware, display is missing *@
             <th>
                 @Html.DisplayNameFor(model => model.Client.LastName)
             </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Client.FirstName)
+            </th> *@
             <th></th>
         </tr>
     </thead>
@@ -52,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.Id)
+                @Html.DisplayFor(modelItem => item.Client.LastName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
