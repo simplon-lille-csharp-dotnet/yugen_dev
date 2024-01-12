@@ -11,3 +11,10 @@
 @await Html.PartialAsync("_menus", Model.Menus)
 @await Html.PartialAsync("_Reviews", Model.Reviews)
 <partial name="_YugenGallery.cshtml" />
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        alert('@Html.Raw(TempData["SuccessMessage"])');
+    </script>
+}

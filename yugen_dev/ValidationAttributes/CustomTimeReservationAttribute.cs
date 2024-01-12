@@ -7,11 +7,6 @@ public class CustomTimeReservationAttribute : ValidationAttribute
 
     public override bool IsValid(object value)
     {
-        if (value == null)
-        {
-            return true; // Null values are considered valid, you can adjust this based on your requirements
-        }
-
         string stringValue = value.ToString();
 
         return AllowedValues.Contains(stringValue);
