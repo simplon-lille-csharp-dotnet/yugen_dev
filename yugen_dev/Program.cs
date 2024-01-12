@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using yugen_dev.Data;
-
+using yugen_dev.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,7 +13,11 @@ builder.Services.AddDbContext<YugenContext>(options =>
 ?? throw new InvalidOperationException("Connection string 'YugenContext' not found.")));
 
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services.GetRequiredService<YugenContext>());
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
