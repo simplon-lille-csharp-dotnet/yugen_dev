@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using yugen_dev.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace yugen_dev.Controllers
@@ -91,6 +92,7 @@ namespace yugen_dev.Controllers
             return View();
         }
 
+        private readonly YugenContext _YugenContext;
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NumberPeople,DateReservation,TimeReservation,Message,Client")] Reservation Reservation)
@@ -98,8 +100,6 @@ namespace yugen_dev.Controllers
 
             if (ModelState.IsValid)
                 {
-                    // var client = await _context.Clients.FindAsync(1);
-
                     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     var client = await _context.Clients.SingleOrDefaultAsync(c => c.IdentityUserId == userId);
 

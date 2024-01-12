@@ -14,7 +14,6 @@ public class Client
    [Display(Name = "Préférences")]
    public string? Preferences { get; set; }
 
-
    public string IdentityUserId { get; set; }
    public IdentityUser IdentityUser { get; set; }
    public ICollection<Review>? Reviews { get; set; } // A client can have several reviews

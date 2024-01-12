@@ -38,6 +38,7 @@ namespace yugen_dev
             if (reservation == null)
             {
                 return NotFound();
+
             }
 
             return View(reservation);
@@ -46,6 +47,9 @@ namespace yugen_dev
         // GET: AdminReservation/Create
         public IActionResult Create()
         {
+            List<Client> ClientList = _context.Clients?.ToList() ?? new List<Client>();
+            ViewBag.Clients = new SelectList(ClientList, "Id", "LastName");
+            // ViewData["Client.Id"] = new SelectList(_context.Clients, "Id", "FirstName", "LastName");
             return View();
         }
 
@@ -54,15 +58,28 @@ namespace yugen_dev
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NumberPeople,DateReservation,TimeReservation,Message")] Reservation reservation)
+        public async Task<IActionResult> Create(ReservationAdminViewModel reservationAdminViewModel)
         {
             if (ModelState.IsValid)
             {
+                var client = new Client() {
+                    LastName = reservationAdminViewModel.ClientName ?? string.Empty,
+                    FirstName = string.Empty,
+                    IdentityUserId = string.Empty
+                };
+                _context.Add(client);
+                var reservation = new Reservation(){
+                    NumberPeople = reservationAdminViewModel.NumberPeople,
+                    DateReservation = reservationAdminViewModel.DateReservation,
+                    TimeReservation = reservationAdminViewModel.TimeReservation,
+                    Message = reservationAdminViewModel.Message,
+                    Client = client
+                };
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(reservation);
+            return View(reservationAdminViewModel);
         }
 
         // GET: AdminReservation/Edit/5
@@ -80,6 +97,7 @@ namespace yugen_dev
             }
             return View(reservation);
         }
+
 
         // POST: AdminReservation/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
