@@ -18,7 +18,7 @@
                     @foreach (var categoryGroup in menu.MenusDishes.GroupBy(md => md.Dish.Category).OrderBy(group => group.Key))
                     {
                         <div class="category-group">
-                            <h4>Category @categoryGroup.Key</h4>
+                            @* <h4>Category @categoryGroup.Key</h4> *@
                             @foreach (var menuDish in categoryGroup)
                             {
                                 <div class="menu-dish-container d-inline-flex">
