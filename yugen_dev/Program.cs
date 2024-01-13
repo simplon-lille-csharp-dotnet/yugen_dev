@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using yugen_dev.Data;
 using Microsoft.AspNetCore.Identity;
+using yugen_dev.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<YugenContext>();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services.GetRequiredService<YugenContext>());
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
