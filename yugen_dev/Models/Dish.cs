@@ -14,7 +14,8 @@ public class Dish
     public bool SignatureDish { get; set; }
     [Display(Name = "Chemin d'accès de l'image")]
     public string ImagePath { get; set; }
-
+    [Display(Name = "Catégorie")]
+    public int Category { get; set; }
     public ICollection<MenuDish>? MenusDishes { get; set; }
 
 }
