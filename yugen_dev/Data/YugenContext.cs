@@ -17,6 +17,7 @@ namespace yugen_dev.Data
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<MenuDish> MenuDish { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
