@@ -11,7 +11,7 @@
                     <div class="menu-title-container d-inline-flex mb-3">
                         <h3 class="jap-name fs-5">@menu.NameJap</h3>
                         <h3 class="flex-grow-1">@menu.NameFr</h3>
-                        <h3>@menu.Price</h3>
+                        <h3>@menu.Price €</h3>
                     </div>
 
                     <!-- Group dishes by category -->
@@ -32,14 +32,16 @@
                         </div>
                     }
                 </div>
+                <img src="@menu.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
+                @* @foreach (var menuDish in menu.MenusDishes)
+        {
+        <img src="@menuDish.Dish.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
+        break;
 
-                @foreach (var menuDish in menu.MenusDishes)
-                {
-                    <img src="@menuDish.Dish.ImagePath" class="img-fluid col-md-4" alt="Dish1" />
-                    break;
-
-                }
+        } *@
             </div>
+
         }
+
     }
 </div>
