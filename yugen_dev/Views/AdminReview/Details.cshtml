@@ -1,0 +1,30 @@
+@model yugen_dev.Models.Review
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Détails</h1>
+
+<div>
+    <h4>Avis</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Éditer</a> |
+    <a asp-action="Index">Retour à la liste des avis</a>
+</div>
