@@ -120,6 +120,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: black!important;
 }
 
+.scrolled button {
+  color: black!important;
+}
+
 .scrolled #logo {
   transition: width 0.3s;
   width: 80px!important;

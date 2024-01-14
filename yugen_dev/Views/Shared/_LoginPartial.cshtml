@@ -20,7 +20,7 @@
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Déconnexion</button>
+            <button id="logout" type="submit" class="nav-link btn btn-link border-0 text-white">Déconnexion</button>
         </form>
     </li>
 }
@@ -38,10 +38,24 @@ else
     
     window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
-                loginImage.src = 'img/profile-user-account-svgrepo-com.svg';
+                if (loginImage) {
+                    loginImage.src = 'img/profile-user-account-svgrepo-com.svg';
+                }
             } else {
-                loginImage.src = 'img/white-profile-user-account-svgrepo-com.svg'; 
+                if (loginImage) {
+                    loginImage.src = 'img/white-profile-user-account-svgrepo-com.svg';
+                } 
             }
         });
     });
+
+    const thirdContainer = document.getElementById('loginContainer');
+
+    function updateFirstContainerWidth() {
+    const firstContainer = document.querySelector('.marginContainer');
+
+    firstContainer.style.width = `${thirdContainer.offsetWidth}px`;
+    }
+
+    updateFirstContainerWidth();
 </script>
