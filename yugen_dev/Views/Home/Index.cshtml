@@ -6,7 +6,6 @@
 
 <partial name="_Welcome.cshtml" />
 <partial name="_YugenPresentation.cshtml" />
-@* <partial name="_SignatureDishes.cshtml"/> *@
 @await Html.PartialAsync("_SignatureDishes", Model.Dishes)
 @await Html.PartialAsync("_menus", Model.Menus)
 @await Html.PartialAsync("_Reviews", Model.Reviews)
