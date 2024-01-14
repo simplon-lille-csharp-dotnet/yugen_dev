@@ -10,6 +10,6 @@ public class Menu
     public string NameJap { get; set; }
     [Display(Name = "Prix")]
     public int Price { get; set; } //One review belong to a single client  
-    public ICollection<MenuDish> MenusDishes { get; set; }
+    public ICollection<MenuDish>? MenusDishes { get; set; }
 
 }
