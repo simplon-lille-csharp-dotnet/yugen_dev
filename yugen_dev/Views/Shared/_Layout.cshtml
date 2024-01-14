@@ -22,7 +22,7 @@
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="marginContainer"></div>
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="img/logo_yugen_blanc.png" id="logo" class="logoImg" style="width: 230px" />
+                        <img src="@Url.Content("~/img/logo_yugen_blanc.png")" id="logo" class="logoImg" style="width: 230px" />
                         </a>
                     <partial name="_LoginPartial" />
                 </div>
@@ -72,17 +72,17 @@
         window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
-                    logoImage.src = 'img/logo_yugen.png'; 
+                    logoImage.src = '@Url.Content("~/img/logo_yugen.png")'; 
                 } else {
                     navbar.classList.remove('scrolled');
-                    logoImage.src = 'img/logo_yugen_blanc.png';
+                    logoImage.src = '@Url.Content("~/img/logo_yugen_blanc.png")';
                 }
             });
         }
         else
         {
             navbar.classList.add('scrolled');
-            logoImage.src = 'img/logo_yugen.png'; 
+            logoImage.src = '@Url.Content("~/img/logo_yugen.png")'; 
         }
 </script>
 
