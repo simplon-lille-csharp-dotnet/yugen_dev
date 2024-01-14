@@ -95,6 +95,36 @@ h1, h2, h3, h4 {
   max-width: 650px;
 }
 
+.justify-self-end {
+  justify-self: flex-end;
+}
+
+.w-45 {
+  width: 45px;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
+}
+
+.navbar a {
+  color: white!important;
+}
+
+.scrolled {
+  background-color: white;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+.scrolled a {
+  color: black!important;
+}
+
+.scrolled button {
+  color: black!important;
+}
+
+.scrolled #logo {
+  transition: width 0.3s;
+  width: 80px!important;
 }
