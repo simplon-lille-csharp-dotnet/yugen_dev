@@ -1,0 +1,63 @@
+@model yugen_dev.Models.Dish
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Supprimer un plat</h1>
+
+<h3>Êtes-vous sûr de vouloir supprimer ce plat ?</h3>
+<div>
+    <h4>Plat</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameFr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameFr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameJap)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameJap)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DetailedDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DetailedDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SignatureDish)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SignatureDish)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a asp-action="Index">Retour à la liste des plats</a>
+    </form>
+</div>
