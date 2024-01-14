@@ -23,6 +23,9 @@ namespace  yugen_dev.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        
+        public static string Review => "Review";
+
         public static string Email => "Email";
 
         /// <summary>
@@ -71,6 +74,10 @@ namespace  yugen_dev.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        
+        public static string ReviewNavClass(ViewContext viewContext) => PageNavClass(viewContext, Review);
+
+
         public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
 
         /// <summary>

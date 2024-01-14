@@ -1,0 +1,14 @@
+@page
+@using yugen_dev.Models;
+@using yugen_dev.Data;
+
+@* @model IEnumerable<Reservation> *@
+
+@{
+    ViewData["Title"] = "Avis";
+    ViewData["ActivePage"] = ManageNavPages.Review;
+}
+
+<h3>@ViewData["Title"]</h3>
+ <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+ asp-action="Review">Déposer un avis</a>

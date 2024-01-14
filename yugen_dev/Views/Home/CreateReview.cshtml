@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "CreateReview";
+}
+
+<h2>Create review</h2>
+
+<form method="post" action="/Home/CreateReview">
+    @await Html.PartialAsync("Review")
+</form>

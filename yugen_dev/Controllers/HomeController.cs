@@ -124,5 +124,61 @@ namespace yugen_dev.Controllers
             return View(Reservation);
         }
 
+        public async Task<IActionResult> Review()
+        {
+              string clientFirstName = "Visiteur non connecté"; // Default name
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var client = await _context.Clients.SingleOrDefaultAsync(c => c.IdentityUserId == userId);
+
+                if (client != null)
+                {
+                    clientFirstName = client.FirstName;
+                }
+            }
+            else
+            {
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
+            }
+
+            ViewData["ClientFirstName"] = clientFirstName;
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReview([Bind("Message,Rating")] Review Review)
+        {
+
+            if (ModelState.IsValid)
+                {
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var client = await _context.Clients.SingleOrDefaultAsync(c => c.IdentityUserId == userId);
+
+
+                    if (client != null)
+                        {
+                        Review.Client = client;
+
+                        _context.Add(Review);
+                        await _context.SaveChangesAsync();
+                        TempData["SuccessMessage"] = "La note a bien été enregistrée!";
+                        return RedirectToAction(nameof(Index));
+                        }
+                    else
+                    {
+                         return BadRequest("Client not found");
+                    }
+                }
+                else {
+                    System.Console.WriteLine("model not valid!");
+                }
+            return View(Review);
+        }
+
+
     }
 }
