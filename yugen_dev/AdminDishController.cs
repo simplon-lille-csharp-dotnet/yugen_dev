@@ -54,7 +54,7 @@ namespace yugen_dev
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameFr,NameJap,Description,DetailedDescription,SignatureDish,ImagePath")] Dish dish)
+        public async Task<IActionResult> Create([Bind("Id,NameFr,NameJap,Description,DetailedDescription,SignatureDish,ImagePath,Category")] Dish dish)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace yugen_dev
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameFr,NameJap,Description,DetailedDescription,SignatureDish,ImagePath")] Dish dish)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameFr,NameJap,Description,DetailedDescription,SignatureDish,ImagePath,Category")] Dish dish)
         {
             if (id != dish.Id)
             {

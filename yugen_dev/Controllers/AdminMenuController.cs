@@ -86,7 +86,7 @@ namespace yugen_dev
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameFr,NameJap,Price")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameFr,NameJap,Price, ImagePath")] Menu menu)
         {
             if (id != menu.Id)
             {
