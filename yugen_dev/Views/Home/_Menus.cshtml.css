@@ -9,7 +9,7 @@
 
 @media (max-width: 768px) {
     .menu-container {
-        flex-direction: column;
+        flex-direction: column!important;
     }
 
     .jap-name {
