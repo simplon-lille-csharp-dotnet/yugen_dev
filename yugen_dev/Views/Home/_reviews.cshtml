@@ -2,12 +2,28 @@
 
 @if (Model != null && Model.Any())
 {
+<div class="mt-5 mb-5 ">
+<h2 class="mt-5 mb-5 fs-2 text-center">Les avis</h2>
+    <div class="d-flex justify-content-between flex-wrap gap-3">
     @foreach (var review in Model) {
-    <p>@review.Client.FirstName @review.Client.LastName @review.Rating/5</p>
-    <p>@review.Message</p>
+    <div class="border border-top-0 border-start-0 p-3  flex-fill col-4">
+        <h5>@review.Client.FirstName @review.Client.LastName @GetStarRating(review.Rating)</h5>
+        <p>@review.Message</p>
+    </div>
     }
+    </div>
+    </div>
 }
 else
 {
     <p>Il n'y a aucun avis pour le moment</p>
 }
+
+@functions {
+    string GetStarRating(int rating)
+    {
+        const string starEmoji = "★";
+        return new string('★', rating);
+    }
+}
+
