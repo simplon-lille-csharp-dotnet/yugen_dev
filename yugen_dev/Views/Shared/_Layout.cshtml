@@ -16,38 +16,37 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 z-2">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="img/logo.png"
-                        style="width: 80px" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        @* <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li> *@
-                        @* <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                        asp-action="Privacy">Privacy</a>
-                        </li> *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"
-                            href="@Url.Content("~/#menu")">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                href="@Url.Content("~/#gallery")">Galerie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Booking">Réservation </a>
-                        </li>
-                        <partial name="_LoginPartial" />
-                    </ul>
+    <header id="header">
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light text-white mb-3 z-2">
+            <div class="container-fluid d-flex flex-column">
+                <div class="container-fluid d-flex justify-content-between">
+                    <div class="marginContainer"></div>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="img/logo_yugen_blanc.png" id="logo" class="logoImg" style="width: 230px" />
+                        </a>
+                    <partial name="_LoginPartial" />
+                </div>
+                <div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                href="@Url.Content("~/#menu")">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" 
+                                    href="@Url.Content("~/#gallery")">Galerie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                    asp-action="Booking">Réservation </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -63,5 +62,28 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    const logoImage = document.getElementById('logo');
+
+    if (window.location.pathname === '/') {
+        navbar.classList.add('fixed-top');
+        window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    logoImage.src = 'img/logo_yugen.png'; 
+                } else {
+                    navbar.classList.remove('scrolled');
+                    logoImage.src = 'img/logo_yugen_blanc.png';
+                }
+            });
+        }
+        else
+        {
+            navbar.classList.add('scrolled');
+            logoImage.src = 'img/logo_yugen.png'; 
+        }
+</script>
 
 </html>
