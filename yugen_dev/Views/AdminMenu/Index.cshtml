@@ -1,0 +1,68 @@
+@model IEnumerable<yugen_dev.Models.Menu>
+
+@{
+    ViewData["Title"] = "Liste des menus";
+}
+
+<h1>Liste des menus</h1>
+
+<p>
+    <a asp-action="Create">Créer un nouveau menu</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameFr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameJap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                Actions
+            </th>
+            <th>
+                Liste des plats
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.NameFr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.NameJap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => menu.ImagePath)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@menu.Id">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@menu.Id">Détails</a> |
+                    <a asp-action="Delete" asp-route-id="@menu.Id">Supprimer</a>
+                </td>
+                <td>
+                    <ul>
+                        @if (menu.MenusDishes != null)
+                            @foreach (var MenuDish in menu.MenusDishes)
+                            {
+                                <li>@MenuDish.Dish.NameFr</li>
+                            }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

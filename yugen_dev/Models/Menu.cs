@@ -12,6 +12,6 @@ public class Menu
     public int Price { get; set; }
     [Display(Name = "Chemin d'accès de l'image")]
     public string ImagePath { get; set; }
-    public ICollection<MenuDish> MenusDishes { get; set; }
+    public ICollection<MenuDish>? MenusDishes { get; set; }
 
 }
